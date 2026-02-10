@@ -1,0 +1,59 @@
+<section x-data="{ active: 0 }" class="min-h-screen flex items-center bg-gray-100">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-2xl shadow-lg overflow-hidden">
+
+    <div class="relative bg-orange-900 bg-[url('https://ritecareer.ca/wp-content/uploads/2021/10/jobsearchinfographics-scaled.jpeg')]  text-white p-10">
+      <template x-if="active === 0">
+        <div>
+          <h2 class="text-3xl font-semibold mb-4">JobFinder</h2>
+          <p class="text-lg">Find the right job that matches your skills.</p>
+        </div>
+      </template>
+
+      <template x-if="active === 1">
+        <div>
+          <h2 class="text-3xl font-semibold mb-4">Verified Companies</h2>
+          <p class="text-lg">Apply only to trusted and verified recruiters.</p>
+        </div>
+      </template>
+
+      <template x-if="active === 2">
+        <div>
+          <h2 class="text-3xl font-semibold mb-4">Easy Apply</h2>
+          <p class="text-lg">Apply to jobs in just one click.</p>
+        </div>
+      </template>
+
+      <div class="absolute bottom-6 left-10 flex gap-2">
+       <!-- <button @click="active = 0" class="w-6 h-1 rounded" :class="active === 0 ? 'bg-white' : 'bg-white/40'"></button>
+        <button @click="active = 1" class="w-6 h-1 rounded" :class="active === 1 ? 'bg-white' : 'bg-white/40'"></button>
+        <button @click="active = 2" class="w-6 h-1 rounded" :class="active === 2 ? 'bg-white' : 'bg-white/40'"></button>
+     --> </div>
+    </div>
+
+    <div class="p-10">
+      <h3 class="text-2xl font-semibold mb-4">Login</h3>
+      <p class="text-gray-500 mb-8">Access your JobFinder account</p>
+
+      <form class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input type="email" class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Password</label>
+          <input type="password" class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500">
+        </div>
+
+        <button class="w-full bg-orange-900 text-white py-2 rounded-lg hover:bg-orange-800">
+          Login
+        </button>
+
+        <p class="text-sm text-center">
+          No account?
+          <a href="#" class="text-orange-900 font-semibold">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
