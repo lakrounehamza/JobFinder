@@ -13,19 +13,44 @@ export class AuthService {
   }
 
   register(request: RegisterRequest) {
-    return this.http.post<UserProfile>("http://localhost:3000/users", request);
+    this.userService.getUserByEmail(request.email).subscribe({
+      next: (user: UserProfile | null) => {
+        if (!user) {
+          this.http.post<UserProfile>("http://localhost:3000/users", request)
+            .subscribe({
+              next: (response) => {
+                console.log("register fini", response);
+              },
+              error: (err) => {
+                console.error("erreur ", err);
+              }
+            });
+
+        } else {
+          console.log("dejat user exest");
+        }
+      }
+    })
   }
 
-  login(resquest : LoginRequest){
-    this.userService.getAllUser().subscribe(
-      {
-        next: (res:UserProfile[])=>{
-          res.forEach(user=>{
-            if(user.email==resquest.email && user.password==resquest.password)
-              localStorage.setItem("user-auth",JSON.stringify(user));
-          });
-    }
+  login(request: LoginRequest): void {
+    this.userService.getUserByEmail(request.email).subscribe({
+      next: (user: UserProfile | null) => {
+        if (!user) {
+          console.log("User not found");
+          return;
+        }
+
+        if (user.password === request.password) {
+          localStorage.setItem("user-auth", JSON.stringify(user));
+          console.log("Login success");
+        } else {
+          console.log("Incorrect password");
+        }
+      },
+      error: (err) => {
+        console.error("Error during login", err);
       }
-    )
+    });
   }
 }

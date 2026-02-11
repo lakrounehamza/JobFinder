@@ -1,25 +1,18 @@
 {
   "users": [
     {
-      "id": "799b",
-      "nom": "hamza3",
-      "prenom": "lakroune",
-      "email": "lakroune@gmail.com",
-      "password": "password1"
-    },
-    {
-      "id": "8010",
-      "nom": "hamza3",
-      "prenom": "lakroune",
-      "email": "email.com",
-      "password": "password1"
-    },
-    {
-      "id": "42a7",
+      "id": "a358",
       "nom": "hamza",
       "prenom": "lakroune",
       "email": "hamza0@email.com",
       "password": "password1"
+    },
+    {
+      "id": "55f6",
+      "nom": "Magni quia ducimus ",
+      "prenom": "Excepturi tempore a",
+      "email": "tidoqalepa@email.com",
+      "password": "Pa$$w0rd!"
     }
   ],
   "applications": [],

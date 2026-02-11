@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {validate} from '@angular/forms/signals';
+import {AuthService} from '../../../../core/services/auth';
+import {RegisterRequest} from '../../../../core/models/auth.model';
 
 @Component({
   selector: 'app-register',
@@ -11,15 +12,18 @@ import {validate} from '@angular/forms/signals';
 export class Register {
 
   registerForm :FormGroup;
-  onSubmit(){
-
-  }
-  constructor(private buildForm : FormBuilder) {
+  constructor(private buildForm : FormBuilder,private authService:AuthService) {
     this.registerForm =this.buildForm.group({
-      nom :['',[Validators.required,Validators.min(3)]],
-      prenom :['',[Validators.required,Validators.min(3)]],
+      nom :['',[Validators.required,Validators.minLength(3)]],
+      prenom :['',[Validators.required,Validators.minLength(3)]],
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.min(8)]]
+      password:['',[Validators.required,Validators.minLength(2)]]
     })
+  }
+  onSubmit(){
+    if(this.registerForm.valid){
+      const request: RegisterRequest = this.registerForm.value;
+      this.authService.register(request);
+    }
   }
 }
