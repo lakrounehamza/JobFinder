@@ -1,5 +1,20 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "799b",
+      "nom": "hamza3",
+      "prenom": "lakroune",
+      "email": "lakroune@gmail.com",
+      "password": "password1"
+    },
+    {
+      "id": "8010",
+      "nom": "hamza3",
+      "prenom": "lakroune",
+      "email": "email.com",
+      "password": "password1"
+    }
+  ],
   "applications": [],
   "favorites": []
 }
