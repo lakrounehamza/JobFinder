@@ -1,25 +1,33 @@
 import { Component } from '@angular/core';
-import {AuthSerivce} from '../../../../core/services/auth';
-import {LoginRequest, UserProfile} from '../../../../core/models/auth.model';
-import {UserService} from '../../../../core/services/user';
+import { AuthService } from '../../../../core/services/auth';
+import { LoginRequest } from '../../../../core/models/auth.model';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
+  standalone: true
 })
 export class Login {
-  constructor(private loginService: AuthSerivce,private userService :UserService) {
-    this.doLogin();
+  loginForm: FormGroup;
+
+  constructor(private loginService: AuthService, private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
   }
-
-  doLogin() {
-    const request: LoginRequest = {
-      email: "email.com",
-      password: "password1"
-    };
-
-    this.loginService.login(request);
+  onSubmit() {
+    console.log("login submit")
+    if (this.loginForm.valid) {
+      const loginRequest: LoginRequest = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      }
+      this.loginService.login(loginRequest);
+    }
   }
 }

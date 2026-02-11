@@ -13,6 +13,13 @@
       "prenom": "lakroune",
       "email": "email.com",
       "password": "password1"
+    },
+    {
+      "id": "42a7",
+      "nom": "hamza",
+      "prenom": "lakroune",
+      "email": "hamza0@email.com",
+      "password": "password1"
     }
   ],
   "applications": [],
