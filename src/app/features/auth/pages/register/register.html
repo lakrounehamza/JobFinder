@@ -1,1 +1,57 @@
-<p>register works!</p>
+<section class="min-h-screen flex items-center bg-gray-100">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div
+      class="relative bg-orange-900 bg-[url('https://ritecareer.ca/wp-content/uploads/2021/10/jobsearchinfographics-scaled.jpeg')]  text-white p-10">
+      <div>
+        <h2 class="text-3xl font-semibold mb-4">JobFinder</h2>
+        <p class="text-lg">Join us and start finding your dream job today!</p>
+      </div>
+    </div>
+    <div class="p-10">
+      <h3 class="text-2xl font-semibold mb-4">Register</h3>
+      <p class="text-gray-500 mb-8">Create your JobFinder account</p>
+
+      <form class="space-y-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Nom</label>
+          <input type="text"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500"
+                 formControlName="nom">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Prénom</label>
+          <input type="text"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500"
+                 formControlName="prenom">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input type="email"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500"
+                 formControlName="email">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Mot de passe</label>
+          <input type="password"
+                 autocomplete="new-password"
+                 class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500"
+                 formControlName="password">
+        </div>
+
+        <button class="w-full bg-orange-900 text-white py-2 rounded-lg hover:bg-orange-800" type="submit">
+          Register
+        </button>
+
+        <p class="text-sm text-center">
+          Already have an account?
+          <a href="#" class="text-orange-900 font-semibold">Login</a>
+        </p>
+      </form>
+    </div>
+
+  </div>
+</section>
