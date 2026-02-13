@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import {JobList} from '../../components/job-list/job-list';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { JobList } from '../../components/job-list/job-list';
+import { JobResponse } from '../../../../core/models/job.model';
 
 @Component({
   selector: 'app-home-page',
@@ -8,6 +10,14 @@ import {JobList} from '../../components/job-list/job-list';
   styleUrl: './home-page.css',
 })
 
-export class HomePage {
+export class HomePage implements OnInit {
+  jobs: JobResponse[] = [];
 
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.data.subscribe(data => {
+      this.jobs = data['jobs'] || [];
+    });
+  }
 }
